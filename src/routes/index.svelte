@@ -7,7 +7,7 @@
 	let keyboard = [
 		['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
 		['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-		['z', 'x', 'c', 'v', 'b', 'n', 'm']
+		['z', 'x', 'c', 'v', 'b', 'n', 'm', 'bck']
 	];
 
 	let filteredWords = [];
@@ -91,7 +91,7 @@
 	}
 
 	function handleKeypress(letter) {
-		if (letter == 'Backspace') {
+		if (letter == 'bck') {
 			if (wordleQuery.length == 0) return;
 			wordleQuery.pop();
 			emptyTiles.push(' ');
@@ -150,7 +150,7 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<body class=" text-white gap-4 flex flex-col">
+<body class=" text-white gap-4 flex flex-col pt-10">
 	<div class="flex flex-col gap-2 mx-auto">
 		<div class="mx-auto grid gap-2 grid-cols-5">
 			{#each wordleQuery as wordleQueryTile}
@@ -164,7 +164,7 @@
 							wordleQueryTile.color = 'grey';
 						}
 					}}
-					class="md:w-16 md:h-16 w-10 h-10 flex cursor-pointer font-bold text-2xl uppercase"
+					class="md:w-16 md:h-16 w-14 h-14 flex cursor-pointer font-bold text-2xl uppercase"
 					class:yellowtile={wordleQueryTile.color == 'yellow'}
 					class:greentile={wordleQueryTile.color == 'green'}
 					class:greytile={wordleQueryTile.color == 'grey'}
@@ -173,26 +173,30 @@
 				</div>
 			{/each}
 			{#each emptyTiles as emptyTile}
-				<div class="md:w-16 md:h-16 w-10 h-10 flex cursor-pointer font-bold text-2xl greytile">
+				<div class="md:w-16 md:h-16 w-14 h-14 flex cursor-pointer font-bold text-2xl greytile">
 					{emptyTile}
 				</div>
 			{/each}
 		</div>
 	</div>
 	<button
-		on:click={() => handleFindWords}
+		on:click={handleFindWords}
 		class="bg-[#818384] hover:bg-[#8e9091] text-white font-bold rounded-sm mx-auto px-4 py-3"
 	>
 		Find Words
 	</button>
-	<div class=" mx-auto flex flex-col gap-2">
+	<div class=" flex flex-col gap-1">
 		{#each keyboard as keyboardLine}
-			<div class="flex gap-2 mx-auto">
+			<div class="flex gap-1 mx-auto">
 				{#each keyboardLine as key}
 					<button
-						class="mx-auto p-2 md:p-0 md:w-10 md:h-14 bg-[#818384] rounded-sm"
-						on:click={() => handleKeypress(key)}>{key}</button
+						class=" flex md:p-0 w-8 h-12 md:w-10 md:h-14 bg-[#818384] rounded-sm"
+						on:click={() => handleKeypress(key)}
 					>
+						<span class="m-auto">
+							{key}
+						</span>
+					</button>
 				{/each}
 			</div>
 		{/each}
