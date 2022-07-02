@@ -150,8 +150,8 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<body class=" text-white p-5 gap-4 flex flex-col">
-	<div class="flex flex-col gap-2">
+<body class=" text-white gap-4 flex flex-col">
+	<div class="flex flex-col gap-2 mx-auto">
 		<div class="mx-auto grid gap-2 grid-cols-5">
 			{#each wordleQuery as wordleQueryTile}
 				<div
@@ -164,7 +164,7 @@
 							wordleQueryTile.color = 'grey';
 						}
 					}}
-					class="w-16 h-16 flex cursor-pointer font-bold text-2xl uppercase"
+					class="md:w-16 md:h-16 w-10 h-10 flex cursor-pointer font-bold text-2xl uppercase"
 					class:yellowtile={wordleQueryTile.color == 'yellow'}
 					class:greentile={wordleQueryTile.color == 'green'}
 					class:greytile={wordleQueryTile.color == 'grey'}
@@ -173,7 +173,9 @@
 				</div>
 			{/each}
 			{#each emptyTiles as emptyTile}
-				<div class="w-16 h-16 flex cursor-pointer font-bold text-2xl greytile">{emptyTile}</div>
+				<div class="md:w-16 md:h-16 w-10 h-10 flex cursor-pointer font-bold text-2xl greytile">
+					{emptyTile}
+				</div>
 			{/each}
 		</div>
 	</div>
@@ -188,7 +190,7 @@
 			<div class="flex gap-2 mx-auto">
 				{#each keyboardLine as key}
 					<button
-						class="mx-auto w-10 h-14 bg-[#818384] rounded-sm"
+						class="mx-auto p-2 md:p-0 md:w-10 md:h-14 bg-[#818384] rounded-sm"
 						on:click={() => handleKeypress(key)}>{key}</button
 					>
 				{/each}
