@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+	.yellowtile {
+		@apply bg-[#fcba03];
+	}
+	.greentile {
+		@apply bg-[#45bf2c];
+	}
+	.greytile {
+		@apply border-2 border-[#3A3A3C];
+	}
+}
+@layer base {
+	body {
+		@apply bg-[#121213];
+	}
+}
