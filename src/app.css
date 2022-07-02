@@ -12,6 +12,9 @@
 	.greytile {
 		@apply border-2 border-[#3A3A3C];
 	}
+	.disable-dbl-tap-zoom {
+		touch-action: manipulation;
+	}
 }
 @layer base {
 	body {

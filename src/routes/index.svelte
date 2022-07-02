@@ -190,7 +190,7 @@
 			<div class="flex gap-1 mx-auto">
 				{#each keyboardLine as key}
 					<button
-						class=" flex md:p-0 w-8 h-12 md:w-10 md:h-14 bg-[#818384] rounded-sm"
+						class=" flex md:p-0 w-8 h-12 md:w-10 md:h-14 bg-[#818384] rounded-sm disable-dbl-tap-zoom"
 						on:click={() => handleKeypress(key)}
 					>
 						<span class="m-auto">
